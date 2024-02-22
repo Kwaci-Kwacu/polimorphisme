@@ -14,10 +14,10 @@ public class Main {
         Phone Realme1 = new Realme();
 
       
-        PhoneUser Yahya = new PhoneUser(Realme1);
+        PhoneUser ifrat = new PhoneUser(Realme1);
 
      
-            Yahya.turnOnThePhone();
+            ifrat.turnOnThePhone();
         
         
         Scanner input = new Scanner(System.in);
