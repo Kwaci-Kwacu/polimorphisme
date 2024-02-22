@@ -1,55 +1,69 @@
 
 package com.mycompany.main;
 
+public class Realme implements Phone {
 
-    
+    private int volume;
+    private boolean isPowerOn;
 
-import java.util.Scanner;
-
-public class Main {
-
-    public static void main(String[] args) {
+    public Realme() {
         
-       
-        Phone Realme1 = new Realme();
+        this.volume = 50;
+    }
 
-      
-        PhoneUser ifrat = new PhoneUser(Realme1);
-
-     
-            ifrat.turnOnThePhone();
-        
-        
-        Scanner input = new Scanner(System.in);
-        String aksi; 
-
-        while (true) {
-            System.out.println("=== APLIKASI INTERFACE ===");
-            System.out.println("[1] Power On HP");
-            System.out.println("[2] Power Off HP");
-            System.out.println("[3] Tambah Volume");
-            System.out.println("[4] Kuranggi Volume");
-            System.out.println("[0] Keluar");
-            System.out.println("--------------------------");
-            System.out.print("Pilih aksi> ");
-            aksi = input.nextLine();
-            
-            if(aksi.equalsIgnoreCase("1")){
-                    Yahya.turnOnThePhone();
-            } else if (aksi.equalsIgnoreCase("2")){
-                    Yahya.turnOffThePhone();
-            } else if (aksi.equalsIgnoreCase("3")){
-                    Yahya.makePhoneLouder();
-            } else if (aksi.equalsIgnoreCase("4")){
-                    Yahya.makePhoneSilent();
-            } else if (aksi.equalsIgnoreCase("0")){
-                System.exit(0);
-            } else {
-                System.out.println("ERORRR! ");
-            }
+    @Override
+    public void powerOn() {
+        if (isPowerOn == false) {
+            isPowerOn = true;
+            System.out.println("Handphone menyala...");
+            System.out.println("Selamat datang di Realme UI");
+            System.out.println("Android version 10");
+        } else {
+            System.out.println("Handphone sudah menyala");
         }
+    }
 
+    @Override
+    public void powerOff() {
+        if (isPowerOn == true) {
+            isPowerOn = false;
+            System.out.println("Handphone dimatikan");
+        } else {
+            System.out.println("Handphone sudah dimatikan");
+        }
+    }
+
+    @Override
+    public void volumeUp() {
+        if (isPowerOn == true) {
+            if (this.volume == MAX_VOLUME) {
+                System.out.println("Volume FULL!!");
+                System.out.println("sudah " + this.getVolume() + "%");
+            } else {
+                this.volume += 10;
+                System.out.println("Volume sekarang: " + this.getVolume() + "%");
+            }
+        } else {
+            System.out.println("Nyalakan dulu HP nya");
+        }
+    }
+
+    @Override
+    public void volumeDown() {
+        if (isPowerOn) {
+            if (this.volume == MIN_VOLUME) {
+                System.out.println("Volume = 0%");
+            } else {
+                this.volume -= 10;
+                System.out.println("Volume sekarang: " + this.getVolume() + "%");
+            }
+        } else {
+            System.out.println("Nyalakan dulu HP nya!!");
+        }
+    }
+
+    public int getVolume() {
+        return this.volume;
     }
 
 }
-
